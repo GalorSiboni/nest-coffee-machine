@@ -1,6 +1,7 @@
 export interface Order {
   id?: string;
-  name: string;
+  customer_name: string;
   description?: string;
-  qty: number;
+  price: number;
+  is_boss: boolean;
 }

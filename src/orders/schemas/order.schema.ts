@@ -1,7 +1,8 @@
 import * as mongoose from 'mongoose';
 
 export const OrderSchema = new mongoose.Schema({
-  name: String,
-  qty: Number,
+  customer_name: String,
+  is_boss: Boolean,
+  price: Number,
   description: String,
 });

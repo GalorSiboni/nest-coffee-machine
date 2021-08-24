@@ -1,5 +1,6 @@
 export class CreateOrderDto {
-  readonly name: string;
+  readonly customer_name: string;
   readonly description: string;
-  readonly qty: number;
+  readonly is_boss: boolean;
+  readonly price: number;
 }

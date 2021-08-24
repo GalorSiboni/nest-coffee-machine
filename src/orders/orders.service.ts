@@ -7,17 +7,17 @@ import { InjectModel } from '@nestjs/mongoose';
 export class OrdersService {
   constructor(@InjectModel('Item') private readonly orderModel: Model<Order>) {}
 
-  async findAll(): Promise<Order[]> {
+  async createNewOrder(order: Order): Promise<Order> {
+    const newOrder = new this.orderModel(order);
+    return await newOrder.save();
+  }
+
+  async getAllOrders(): Promise<Order[]> {
     return await this.orderModel.find();
   }
 
   async findOne(id: string): Promise<Order> {
     return await this.orderModel.findOne({ _id: id });
-  }
-
-  async create(item: Order): Promise<Order> {
-    const newItem = new this.orderModel(item);
-    return await newItem.save();
   }
 
   async update(id: string, item: Order): Promise<Order> {

@@ -13,33 +13,25 @@ import { Order } from './interfaces/order.interface';
 
 @Controller('orders')
 export class OrdersController {
-  constructor(private readonly itemService: OrdersService) {}
+  constructor(private readonly ordersService: OrdersService) {}
 
   @Get()
-  findAll(): Promise<Order[]> {
-    return this.itemService.findAll();
+  getAllOrders(): Promise<Order[]> {
+    return this.ordersService.getAllOrders();
   }
 
   @Get(':id')
-  findOne(@Param('id') id): Promise<Order> {
-    return this.itemService.findOne(id);
+  getOrderById(@Param('id') id): Promise<Order> {
+    return this.ordersService.findOne(id);
   }
 
   @Post()
-  create(@Body() CreateItemDto: CreateOrderDto): Promise<Order> {
-    return this.itemService.create(CreateItemDto);
-  }
-
-  @Put(':id')
-  update(
-    @Body() CreateItemDto: CreateOrderDto,
-    @Param('id') id,
-  ): Promise<Order> {
-    return this.itemService.update(id, CreateItemDto);
+  createNewOrder(@Body() CreateOrderDto: CreateOrderDto): Promise<Order> {
+    return this.ordersService.createNewOrder(CreateOrderDto);
   }
 
   @Delete(':id')
-  delete(@Param('id') id): Promise<Order> {
-    return this.itemService.delete(id);
+  deleteOrder(@Param('id') id): Promise<Order> {
+    return this.ordersService.delete(id);
   }
 }
