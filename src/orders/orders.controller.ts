@@ -13,7 +13,7 @@ import { Order } from './interfaces/order.interface';
 
 @Controller('orders')
 export class OrdersController {
-  constructor(private readonly ordersService: OrdersService) {}
+  constructor(private readonly ordersService: OrdersService) { }
 
   @Get()
   getAllOrders(): Promise<Order[]> {

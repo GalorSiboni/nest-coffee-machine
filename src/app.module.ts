@@ -8,8 +8,8 @@ import { OrdersModule } from './orders/orders.module';
 import keys from './config/keys';
 
 @Module({
-  imports: [MongooseModule.forRoot(keys.mongoURI), OrdersModule],
+  imports: [OrdersModule, MongooseModule.forRoot(keys.mongoURI)],
   controllers: [AppController, OrdersController],
-  providers: [AppService, OrdersService],
+  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

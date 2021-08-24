@@ -5,7 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class OrdersService {
-  constructor(@InjectModel('Item') private readonly orderModel: Model<Order>) {}
+  constructor(@InjectModel('Orders') private readonly orderModel: Model<Order>) { }
 
   async createNewOrder(order: Order): Promise<Order> {
     const newOrder = new this.orderModel(order);
@@ -20,8 +20,8 @@ export class OrdersService {
     return await this.orderModel.findOne({ _id: id });
   }
 
-  async update(id: string, item: Order): Promise<Order> {
-    return await this.orderModel.findByIdAndUpdate(id, item);
+  async update(id: string, order: Order): Promise<Order> {
+    return await this.orderModel.findByIdAndUpdate(id, order);
   }
 
   async delete(id: string): Promise<Order> {
